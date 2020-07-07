@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <title>Login</title>
+    <link rel="stylesheet" href="../../static/css/login.css">
+{% endblock %}
+
+{% block body %}
+
+<div id="login">
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <form id="login-form" class="form" action="" method="post">
+                        {% csrf_token %}
+                        <h3 class="text-center text-info">Login</h3>
+                        <div class="form-group">
+                            <label for="email" class="text-info">Email:</label><br>
+                            <input type="text" name="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="text-info">Password:</label><br>
+                            <input type="password" name="password" id="password" class="form-control" required>
+                            <p class="text-danger">
+                                {% if messages %}
+                                {% for message in messages %}
+                                    {{message}}
+                                {% endfor %}
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="remember-me" class="text-info"><span><input id="remember-me" name="remember-me" type="checkbox"></span><span>Remember me</span> </label><br>
+                            <div class="text-center">
+                            <button type="submit" name="submit" class="btn btn-info btn-md">submit</button>
+                            </div>
+                        </div>
+                        <div id="register-link" class="text-right">
+                            <a href="{% url 'registration' %}" class="text-info">Register here</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+
+{% endblock %}
+{% block srcipt %}
+    
+{% endblock %}

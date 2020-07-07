@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <title>User-Profile</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+{% endblock %}
+
+{% block body %}
+    
+  <div id="profile" class="mt-5">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="card-deck">
+                    <div class="card ">
+                        <div class="img-color">
+                          {% if user_profile.profile_image %}
+                            <img src="{{user_profile.profile_image.url}}" class="w-50 rounded-circle  card-img-top mx-auto d-block mt-2 mb-2 shadow-lg" />
+                            {% else %}
+                            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="w-50 rounded-circle img-thumbnail card-img-top mx-auto d-block mt-5" />
+                          {% endif %}
+                          </div>
+                          <div class="text-body-color">
+                        <div class="card-body">
+                          
+                            <h5 class="card-title card-title-color">
+                              <b><i>
+                              {{user_profile.first_name}}
+                              {{user_profile.last_name}}</h5>
+                            
+                            </i></b>
+                              <h6 class="card-title card-title-color">
+                                {{user_profile.email}}
+                              </h6>
+                              
+                                  <p class="card-text">
+                                    <p class="mb-5 card-text-color">
+                                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                      My name is {{user_profile.first_name}}. 
+                                      {% if user_profile.position %}
+                                      I am a <i><b>{{user_profile.position}} position</b></i>. 
+                                      {% endif %}
+                                      {% if user_profile.location %}
+                                      I live in <i>{{user_profile.location}}</i>. 
+                                      {% endif %}
+                                    </p>
+                                    
+                                    <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    <a href=""><i class="fa fa-github" aria-hidden="true"></i></a>
+                                  </p>
+                              </div>
+                            
+                        </div>
+                        {% if user_profile.mobile %}
+                        <div class="card-footer footer-color">
+                            <small class="text-muted">
+                              <h5> Contact Information</h>
+                              <h6>Mobile - {{user_profile.mobile}}</h6>
+                            </small>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% endblock %}
+
+{% block script %}  
+    
+{% endblock %}
